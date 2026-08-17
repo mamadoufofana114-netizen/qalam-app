@@ -7,11 +7,9 @@ export default async function handler(req, res) {
   if (!apiKey) {
     return res.status(500).json({ error: "ANTHROPIC_API_KEY manquant dans les variables d'environnement Vercel." });
   }
-
+console.log("BODY REÇU:", JSON.stringify(req.body));
   const { prompt, style } = req.body || {};
-  if (!prompt) {
-    return res.status(400).json({ error: "prompt est requis." });
-  }
+  
 
   const SYSTEM_PROMPT = `Tu es scénariste spécialisé dans les histoires dramatiques religieuses islamiques africaines pour TikTok/YouTube Shorts, dans un style connu pour cartonner sur les réseaux.
 Structure obligatoire de la réponse, en français, sans markdown ni astérisques :
